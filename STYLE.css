@@ -2,6 +2,7 @@ body{
     margin: 0px; 
     padding: 0px;
     background-color: #5cd3f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .container {
     max-width: 1400px;
@@ -14,7 +15,6 @@ body{
 }
 a{
     text-decoration: none; 
-    font-size: 30px; 
     font-weight: bold;
 }
 ul {
@@ -111,12 +111,10 @@ button {
 }
 .jumbotron .banner-description h1 {
     font-size: 70px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1;
 }
 .jumbotron .banner-description h3 {
     font-size: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1;
 }
 .jumbotron .banner-description p {
@@ -133,5 +131,13 @@ button {
     color: #226a80
 }
 .color-white {
+    color: #ffffff
+}
+.link-button {
+    display: inline-block;
+    background-color: #226a80;
+    padding: 20px 40px 20px 40px;
+    text-decoration: none;
+    border-radius: 5px;
     color: #ffffff
 }
