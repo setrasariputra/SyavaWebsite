@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Form Pembelian SyaNaZa</title>
+ </head>
+ <body>
+	<style>
+        body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* background-color: #792099; */
+    background: linear-gradient(to bottom, #792099, #5462a9, #25b7c0);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    width: 500px;
+    /* border: 10px solid #792099; */
+    box-sizing: border-box;
+    margin: auto;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+}
+.form-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.form-textarea {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.form-select {
+    width: 150px;
+    padding: 5px;
+}
+.form-content {
+    margin-bottom: 10px;
+}
+.form-button {
+    display:block;
+    margin: auto;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 10px 20px 10px;
+    background-color: #792099;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-button:hover {
+    background-color: #25b7c0;
+}
+.form-button:active {
+    background-color: #792099;
+}
+    </style>
+<center>
+
+ <div class="container">
+ <div class="tab table-1">
+ <table>
+ <tr>
+ <td align="center"><img src="Background4.jpg" width="300" height="200" /></td>
+ </tr>
+ <tr>
+ <td>
+ <form name="survey">
+ <center>
+ <h4><font color="black">FORM PESANAN<br>Pemesanan Secara Online Toko SyaNaZa</font></h4></center>
+ <pre>
+<input type='text' placeholder="Nama" name='vtiket' id="vtiket" size="46"><br>
+<input type='text' placeholder="Nomor Telepon" name='vnama' id="vnama" size="46"><br>
+<input type='text' placeholder="Alamat; Jl, Kec, Kota, No.Rumah, Kode Pos" name='vnama' id="vnama" size="46"><br>
+<b>BARANG</b>
+<select name='vkategori' id="vkategori">
+ <option></option>
+ <option>Laptop</option>
+<option>Televisi</option>
+<option>Kulkas</option>
+<option>Setrika</option>
+<option>Rice Cooker</option>
+<option>Mesin Cuci</option>
+<option>Oven</option>
+<option>Airpods</option>
+<option>Kipas Angin</option>
+ </select><br>
+<b>HARGA BARANG</b>
+<select name='vhandle' id="vhandle">
+		<option></option>
+		<option>Laptop "Rp3.500.000"</option>
+		<option>Televisi "Rp3.500.000"</option>
+		<option>Kulkas "Rp2.800.000"</option>
+		<option>Setrika "400.000"</option>
+        <option>Mesin Cuci "Rp1.600.000"</option>
+		<option>Rice Cooker "Rp300.000"</option>
+		<option>Oven "Rp200.000"</option>
+        <option>Airpods "Rp150.000"</option>
+        <option>Kipas Angin "Rp200.000"</option>
+ </select><br>
+<b>JUMLAH</b>
+<select name='vnilai' id="vnilai">
+	 <option></option>
+	 <option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	<option>5</option>
+	 <option>6</option>
+	 <option>7</option>
+	 <option>8</option>
+	 <option>9</option>
+	 <option>10</option>
+ </select>
+ </pre>
+
+ </center>
+ </form>
+ <center>
+ <button class="btn" onclick="SubmitData();">SUBMIT</button>&nbsp;&nbsp;&nbsp; 
+ <button class="btn" onclick="UpdateData();">UPDATE</button>
+ </td>
+ </tr>
+ </table>
+ </div>
+ </div>
+ <br>
+ <div class="tab table-2">
+ <table id="survey" cellpadding="2" >
+ <tr>
+ <th colspan="7" bgcolor="white" align="center">HASIL FORM SURVEY</th>
+ </tr>
+ <tr>
+	<th width="100">Nama</th>
+	<th >Nomor Telepon</th>
+	<th width="100">Alamat</th>
+	<th width="150">BARANG</th>
+	<th >HARGA BARANG</th>
+	 <th width="150">JUMLAH</th>
+ </tr>
+ </table>
+ </div>
+
+
+ <script>
+ var rIndex,
+ table = document.getElementById("survey");
+ function SubmitData() 
+ {
+ var getLastIndex = table.getElementsByTagName("tr").length;
+ if(!HarusIsiData()){
+ var newRow = table.insertRow(getLastIndex),
+ cell1 = newRow.insertCell(0),
+ cell2 = newRow.insertCell(1),
+ cell3 = newRow.insertCell(2),
+ cell4 = newRow.insertCell(3),
+ cell5 = newRow.insertCell(4),
+ cell6 = newRow.insertCell(5),
+ cell7 = newRow.insertCell(6),
+
+ vtiket 	= document.getElementById("vtiket").value,
+ vnama 		= document.getElementById("vnama").value,
+ vkategori 	= document.getElementById("vkategori").value;
+ vhandle 	= document.getElementById("vhandle").value;
+ vnilai 	= document.getElementById("vnilai").value;
+ vbtn_edit 	= "<button onclick='EditData(" + getLastIndex + ")'>Edit </button>";
+ vbtn_delet = "<button onclick='DeleteData(" + getLastIndex +")'>Delete</button>";
+ 
+ cell1.innerHTML = vtiket;
+ cell2.innerHTML = vnama;
+ cell3.innerHTML = vkategori;
+ cell4.innerHTML = vhandle;
+ cell5.innerHTML = vnilai;
+ cell6.innerHTML = vbtn_edit;
+ cell7.innerHTML = vbtn_delet;
+
+ clearform();
+ document.getElementById("survey").scrollIntoView(true);
+ alert("Data Berhasil Di Submit. \nSilahkan Cek Tabel Hasil Form Survey");
+
+
+ }
+ }
+
+ function EditData(index) 
+ {
+ rIndex = index;
+ document.getElementById("vtiket").value = table.rows[index].cells[0].innerHTML;
+ document.getElementById("vnama").value  = table.rows[index].cells[1].innerHTML;
+ document.getElementById("vkategori").value = table.rows[index].cells[2].innerHTML;
+ document.getElementById("vhandle").value   = table.rows[index].cells[3].innerHTML;
+ document.getElementById("vnilai").value    = table.rows[index].cells[4].innerHTML;
+ alert("Silahkan ubah data ini pada Form Survey");
+
+ }
+
+ function UpdateData() 
+ {
+ var vtiket = document.getElementById("vtiket").value;
+ vnama      = document.getElementById("vnama").value;
+ vkategori  = document.getElementById("vkategori").value;
+ vhandle    = document.getElementById("vhandle").value;
+ vnilai     = document.getElementById("vnilai").value;
+ if(!HarusIsiData()){
+ table.rows[rIndex].cells[0].innerHTML = vtiket;
+ table.rows[rIndex].cells[1].innerHTML = vnama;
+ table.rows[rIndex].cells[2].innerHTML = vkategori;
+ table.rows[rIndex].cells[3].innerHTML = vhandle;
+ table.rows[rIndex].cells[4].innerHTML = vnilai;
+
+ clearform();
+ document.getElementById("survey").scrollIntoView(true);
+ alert("Update Data Berhasil");
+ }
+ }
+
+ function DeleteData(rowIndex) 
+ {
+ var index;
+ if (rowIndex != null) {
+ index = rowIndex;
+ } else {
+ index = rIndex;
+ }
+ table.deleteRow(index);
+ alert("Data Berhasil Dihapus");
+
+
+ }
+
+ function clearform() 
+ {
+ document.getElementById("vtiket").value = "";
+ document.getElementById("vnama").value = "";
+ document.getElementById("vkategori").value = "";
+ document.getElementById("vhandle").value = "";
+ document.getElementById("vnilai").value = "";
+ }
+
+ function HarusIsiData() 
+ {
+ var isEmpty = false,
+ vtiket = document.getElementById("vtiket").value,
+vnama = document.getElementById("vnama").value,
+vkategori =
+document.getElementById("vkategori").value;
+ vhandle =
+document.getElementById("vhandle").value;
+ vnilai = document.getElementById("vnilai").value;
+
+ if (vtiket === "") {
+alert("No. Tiket Gangguan HARUS DI ISI !!");
+isEmpty = true;
+ }
+ else if (vnama === "") {
+alert("Nama Requester HARUS DI ISI !!");
+isEmpty = true;
+ }
+ else if (vkategori === "") {
+alert("Kategori HARUS DI ISI !!");
+isEmpty = true;
+ }
+ else if (vhandle === "") {
+ alert("Teknisi / Engineer HARUS DI ISI !!");
+isEmpty = true;
+ }
+ else if (vnilai ===""){
+ alert("Nilai HARUS DI ISI !!");
+isEmpty = true;
+
+ }
+ return isEmpty;
+ }
+ </script>
+ 
+</center>
+ </body>
+</html>
